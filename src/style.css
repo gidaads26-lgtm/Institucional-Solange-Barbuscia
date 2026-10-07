@@ -227,3 +227,6 @@ p { margin: 0 0 1em; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Fotos reais: recorte vertical focado no rosto */
+.photo-frame img, .about__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
