@@ -277,3 +277,4 @@ p { margin: 0 0 1em; }
   .hero--cap .hero__media img { object-position: 50% 6%; }
 }
 @media (max-width: 899px) { .hero--cap { background: linear-gradient(to bottom, var(--vinho-profundo) 0%, var(--vinho-profundo) 55%, #4a0f24 100%); } }
+.hero--cap .hero__cta { margin-top: 32px; }
