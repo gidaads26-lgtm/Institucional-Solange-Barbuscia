@@ -278,3 +278,109 @@ p { margin: 0 0 1em; }
 }
 @media (max-width: 899px) { .hero--cap { background: linear-gradient(to bottom, var(--vinho-profundo) 0%, var(--vinho-profundo) 55%, #4a0f24 100%); } }
 .hero--cap .hero__cta { margin-top: 32px; }
+
+/* ===== Acabamento final ===== */
+
+/* Hero: transição foto/cor sem emendas (máscaras no lugar de sobreposições de cor) */
+.hero--cap { background: linear-gradient(105deg, #390919 0%, #44101f 60%, #4d1226 100%); overflow: hidden; }
+.hero--cap .hero__media { width: 62%; }
+.hero--cap .hero__media::before, .hero--cap .hero__media::after { content: none; }
+.hero--cap .hero__media img {
+  object-position: 50% 26%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.12) 14%, rgba(0,0,0,.45) 30%, rgba(0,0,0,.8) 48%, #000 64%),
+                      linear-gradient(to bottom, transparent 0%, #000 14%, #000 70%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.12) 14%, rgba(0,0,0,.45) 30%, rgba(0,0,0,.8) 48%, #000 64%),
+              linear-gradient(to bottom, transparent 0%, #000 14%, #000 70%, transparent 100%);
+  mask-composite: intersect;
+  animation: heroImg 1.4s ease both;
+}
+@keyframes heroImg { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: none; } }
+@media (max-width: 899px) {
+  .hero--cap { background: var(--vinho-profundo); }
+  .hero--cap .hero__media { width: 100%; }
+  .hero--cap .hero__media img {
+    object-position: 50% 14%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 52%, rgba(0,0,0,.6) 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 52%, rgba(0,0,0,.6) 76%, transparent 100%);
+    -webkit-mask-composite: source-over; mask-composite: add;
+  }
+}
+/* Hero: entrada em cascata */
+.hero--cap .hero__text > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+.hero--cap .hero__text > :nth-child(1) { animation-delay: .1s; }
+.hero--cap .hero__text > :nth-child(2) { animation-delay: .25s; }
+.hero--cap .hero__text > :nth-child(3) { animation-delay: .4s; }
+.hero--cap .hero__text > :nth-child(4) { animation-delay: .55s; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Tipografia */
+h1, h2, h3, .lead { text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: var(--dourado); color: var(--vinho-profundo); }
+.script { text-shadow: 0 0 24px rgba(201,163,91,.25); }
+
+/* Ornamento dourado sob títulos de seção */
+.section__head h2::after { content: ''; display: block; width: 64px; height: 2px; margin: 18px auto 0; background: linear-gradient(90deg, transparent, var(--dourado), transparent); }
+
+/* Barra de progresso de leitura */
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60; background: linear-gradient(90deg, var(--dourado), #f0d594); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+/* Spotlight que segue o mouse nos cards */
+.card, .mini, .quote { --mx: 50%; --my: 50%; }
+.card::before, .mini::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .35s; background: radial-gradient(260px circle at var(--mx) var(--my), rgba(201,163,91,.28), transparent 70%); }
+.card:hover::before, .mini:hover::before { opacity: 1; }
+.card > *, .mini > * { position: relative; }
+
+/* Método: cards com vida */
+#abordagem .card { overflow: hidden; transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s, border-color .45s; border: 1px solid transparent; }
+#abordagem .card::after { content: ''; position: absolute; left: 32px; right: 32px; bottom: 0; height: 3px; background: var(--dourado); transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+#abordagem .card:hover { transform: translateY(-10px) scale(1.015); box-shadow: 0 28px 50px rgba(57,9,25,.28); border-color: var(--dourado); }
+#abordagem .card:hover::after { transform: scaleX(1); }
+#abordagem .card .num { transition: transform .45s cubic-bezier(.2,.7,.2,1), letter-spacing .45s; transform-origin: left; }
+#abordagem .card:hover .num { transform: scale(1.18); letter-spacing: .06em; }
+#abordagem .card--rose:hover { background: #fff; }
+.benefits li { transition: transform .3s, background .3s, color .3s, box-shadow .3s; cursor: default; }
+.benefits li:hover { transform: translateY(-4px); background: var(--vinho); color: var(--rosa-blush); box-shadow: 0 12px 24px rgba(117,32,61,.25); }
+
+/* Atendimentos: cards que se acendem */
+.mini { position: relative; overflow: hidden; transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, background .4s, color .4s, border-color .4s; }
+.mini::after { content: '→'; position: absolute; right: 20px; bottom: 14px; color: var(--dourado); font-size: 1.3rem; opacity: 0; transform: translateX(-10px); transition: opacity .3s, transform .3s; }
+.mini:hover { transform: translateY(-10px); background: linear-gradient(155deg, var(--vinho), var(--vinho-profundo)); color: var(--rosa-blush); border-color: var(--dourado); box-shadow: 0 24px 44px rgba(57,9,25,.3); }
+.mini:hover h3 { color: #fff; }
+.mini:hover::after { opacity: 1; transform: none; }
+.mini h3, .mini p { transition: color .4s; }
+.mini { padding-bottom: 46px; }
+
+/* Como funciona, depoimentos, FAQ */
+.timeline li { transition: transform .35s; }
+.timeline li:hover { transform: translateX(8px); }
+.timeline li:hover span { background: var(--dourado); color: var(--vinho-profundo); }
+.timeline span { transition: background .3s, color .3s; }
+.quote { transition: transform .35s, box-shadow .35s; }
+.quote:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(117,32,61,.18); }
+.faq details { transition: box-shadow .3s, border-color .3s; }
+.faq details:hover, .faq details[open] { border-color: var(--dourado); box-shadow: 0 10px 24px rgba(117,32,61,.12); }
+.chips li { transition: transform .3s; }
+.chips li:hover { transform: translateY(-3px); }
+
+/* Foto do Sobre */
+.about__photo img { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.about__photo:hover img { transform: scale(1.04); }
+
+/* Instagram clicável (Sobre) */
+.ig-btn { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; color: var(--vinho); border: 1.5px solid var(--dourado); background: rgba(255,255,255,.6); transition: transform .3s, background .3s, color .3s, box-shadow .3s; }
+.ig-btn:hover { background: linear-gradient(45deg, var(--vinho), #b0345f); color: #fff; transform: translateY(-4px) rotate(-6deg); box-shadow: 0 12px 24px rgba(117,32,61,.3); }
+
+/* WhatsApp flutuante com pulso */
+.wa-float::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25d366; animation: ring 2.4s ease-out infinite; }
+@keyframes ring { from { transform: scale(1); opacity: .8; } to { transform: scale(1.6); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--cap .hero__text > *, .hero--cap .hero__media img, .wa-float::after { animation: none !important; }
+}
+/* mantém o fade de entrada (reveal) junto das transições de hover */
+.mini { transition: opacity .7s ease var(--d, 0ms), transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, background .4s, color .4s, border-color .4s; }
+#abordagem .card { transition: opacity .7s ease var(--d, 0ms), transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s, border-color .45s; }
+.quote { transition: opacity .7s ease var(--d, 0ms), transform .35s, box-shadow .35s; }
+.reveal:not(.is-visible) { transition-property: opacity, transform; }

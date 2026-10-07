@@ -79,7 +79,7 @@ const mapObs = new IntersectionObserver(
     mapObs.disconnect();
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.google.com/maps?q=${q}&output=embed`;
-    iframe.title = 'Mapa do local de atendimento — Lago Norte, Brasília';
+    iframe.title = 'Mapa do local de atendimento, Lago Norte, Brasília';
     iframe.loading = 'lazy';
     iframe.referrerPolicy = 'no-referrer-when-downgrade';
     iframe.allowFullscreen = true;
@@ -100,3 +100,34 @@ map.addEventListener('mouseleave', () => {
     map.append(cover);
   }
 });
+
+// Barra de progresso de leitura
+const bar = document.createElement('div');
+bar.className = 'progress';
+bar.setAttribute('aria-hidden', 'true');
+document.body.prepend(bar);
+const updateProgress = () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.setProperty('--p', max > 0 ? Math.min(scrollY / max, 1) : 0);
+};
+updateProgress();
+addEventListener('scroll', updateProgress, { passive: true });
+
+// Spotlight que acompanha o mouse nos cards
+if (matchMedia('(hover: hover)').matches) {
+  document.querySelectorAll('.card, .mini').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+}
+
+// Paralaxe sutil na foto do hero (desativada com movimento reduzido)
+const heroImg = document.querySelector('.hero__media img');
+if (heroImg && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  addEventListener('scroll', () => {
+    if (scrollY < innerHeight) heroImg.style.translate = `0 ${scrollY * 0.06}px`;
+  }, { passive: true });
+}
