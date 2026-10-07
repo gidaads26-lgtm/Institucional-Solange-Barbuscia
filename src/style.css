@@ -230,3 +230,10 @@ p { margin: 0 0 1em; }
 
 /* Fotos reais: recorte vertical focado no rosto */
 .photo-frame img, .about__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
+
+/* Rodapé centralizado */
+.footer__center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.footer__role { margin: 0; letter-spacing: .2em; text-transform: uppercase; font-size: .72rem; color: var(--dourado); }
+.footer__ig { margin: 18px 0 6px; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--dourado); border-radius: 50%; color: var(--rosa-blush); transition: background .25s, color .25s, transform .25s; }
+.footer__ig:hover { background: var(--dourado); color: var(--vinho-profundo); transform: translateY(-3px); }
+.footer__center .footer__legal { border-top: 1px solid rgba(201,163,91,.3); margin-top: 24px; padding-top: 20px; width: 100%; max-width: 560px; }

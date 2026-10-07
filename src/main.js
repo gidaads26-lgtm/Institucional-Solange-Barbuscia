@@ -16,7 +16,6 @@ document.querySelectorAll('[data-wa]').forEach((a) => {
   a.rel = 'noopener';
 });
 document.getElementById('btn-maps').href = mapsUrl;
-document.getElementById('footer-map').href = mapsUrl;
 document.getElementById('btn-waze').href = wazeUrl;
 document.getElementById('ano').textContent = new Date().getFullYear();
 
