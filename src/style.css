@@ -417,3 +417,4 @@ p { text-wrap: pretty; }
   .about__text .ig-btn { display: grid; margin: 4px auto 0; }
 }
 @media (max-width: 640px) { .benefits, .chips { grid-auto-rows: 1fr; } }
+.avatar { object-fit: cover; object-position: 50% 25%; }
