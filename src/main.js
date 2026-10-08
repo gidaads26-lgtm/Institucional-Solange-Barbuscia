@@ -1,7 +1,7 @@
 import './style.css';
 
 // WhatsApp de Solange: +55 61 9817-1503 (55 + DDD + número, só dígitos).
-const WHATSAPP_NUMBER = '5561981715031';
+const WHATSAPP_NUMBER = '556198171503';
 const WHATSAPP_MESSAGE = 'Olá, Solange! Gostaria de agendar uma conversa.';
 const ADDRESS = 'SHIN QI 7, Conjunto 15, Casa 05, Lago Norte, Brasília, DF, 71515-150';
 
