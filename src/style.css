@@ -382,3 +382,6 @@ h2 em{position:relative}
 /* Antes de tudo: texto justificado */
 #empatia .narrow>p:not(.script){text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto;text-wrap:wrap;text-align-last:left}
 @media(max-width:640px){#empatia .narrow>p:not(.script){font-size:1rem;line-height:1.75}}
+
+/* Foto do hero (nova): enquadramento do rosto no arco */
+.hx__photo img{object-position:50% 58%}
