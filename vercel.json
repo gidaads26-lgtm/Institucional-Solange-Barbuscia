@@ -3,5 +3,14 @@
   "framework": "vite",
   "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/mulherdoseculoxxi", "destination": "/mulheresdoseculoxxi", "permanent": false },
+    { "source": "/mulheresdoseculo21", "destination": "/mulheresdoseculoxxi", "permanent": false },
+    { "source": "/workshop", "destination": "/mulheresdoseculoxxi", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/mulheresdoseculoxxi", "destination": "https://workshopmulherdoseculo.vercel.app/" },
+    { "source": "/mulheresdoseculoxxi/:path*", "destination": "https://workshopmulherdoseculo.vercel.app/:path*" }
+  ]
 }
