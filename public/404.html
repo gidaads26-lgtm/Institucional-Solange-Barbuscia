@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Página não encontrada | Solange Godoy</title>
+  <meta name="theme-color" content="#390919" />
+  <script>
+    // Corrige endereços digitados com maiúsculas ou variações (ex.: /MulheresDoSeculoXXI)
+    (function () {
+      var p = location.pathname.toLowerCase().replace(/\/+$/, '');
+      var mapa = {
+        '/mulheresdoseculoxxi': '/mulheresdoseculoxxi',
+        '/mulherdoseculoxxi': '/mulheresdoseculoxxi',
+        '/mulheresdoseculo21': '/mulheresdoseculoxxi',
+        '/mulherdoseculo21': '/mulheresdoseculoxxi',
+        '/workshop': '/mulheresdoseculoxxi'
+      };
+      var destino = mapa[p] || (p.indexOf('/mulheresdoseculoxxi/') === 0 ? '/mulheresdoseculoxxi' : null);
+      if (destino && destino !== location.pathname) location.replace(destino + location.search + location.hash);
+    })();
+  </script>
+  <style>
+    :root{--wine:#390919;--rose:#ffe4eb;--gold:#c9a45c}
+    *{box-sizing:border-box;margin:0}
+    body{min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center;font-family:system-ui,sans-serif;color:var(--rose);
+      background:radial-gradient(90% 70% at 100% 0%,#772442 0%,transparent 60%),linear-gradient(165deg,#4a0f24,#390919 55%,#2a0612)}
+    h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(28px,6vw,44px);margin:8px 0 12px}
+    p{opacity:.85;max-width:420px;margin:0 auto 28px;line-height:1.6}
+    small{letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-size:12px}
+    a{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:700;text-decoration:none;color:#2a0612;
+      background:linear-gradient(135deg,#f6dc93,#ddb463 45%,#b98a3c)}
+  </style>
+</head>
+<body>
+  <main>
+    <small>Solange Godoy</small>
+    <h1>Página não encontrada</h1>
+    <p>O endereço pode ter sido digitado de outro jeito. Use o botão abaixo para voltar ao site.</p>
+    <a href="/">Ir para o site</a>
+  </main>
+</body>
+</html>
